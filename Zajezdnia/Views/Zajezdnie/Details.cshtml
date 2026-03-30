@@ -1,0 +1,37 @@
+﻿@model Zajezdnia.Models.Zajezdnia_autobusow
+@{
+    ViewData["Title"] = "Szczegóły zajezdni";
+}
+
+<h2>@Model.Nazwa</h2>
+
+<p><strong>Adres:</strong> @Model.Adres</p>
+<p><strong>Miasto:</strong> @Model.Miasto</p>
+
+<h3>Autobusy w zajezdni</h3>
+@if (Model.Autobusy.Any())
+{
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Numer rejestracyjny</th>
+            <th>Kierowcy</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var a in Model.Autobusy)
+        {
+            <tr>
+                <td>@a.NumerRejestracyjny</td>
+                <td>@string.Join(", ", a.Kierowcy.Select(k => k.Imie + " " + k.Nazwisko))</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Brak autobusów w tej zajezdni.</p>
+}
+
+<a class="btn btn-secondary" href="@Url.Action("Index")">Powrót do listy</a>

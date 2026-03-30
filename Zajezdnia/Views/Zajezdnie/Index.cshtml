@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Zajezdnia.Models.Zajezdnia_autobusow>
+@{
+    ViewData["Title"] = "Lista zajezdni";
+}
+
+<h2>Zajezdnie autobusowe</h2>
+
+<form method="get" class="form-inline mb-3">
+    <input type="text" name="szukaj" value="@ViewBag.Szukaj" placeholder="Szukaj..." class="form-control mr-2" />
+
+    <select name="miasto" class="form-control mr-2">
+        <option value="">Wszystkie miasta</option>
+        @foreach (var m in ViewBag.Miasta as List<string>)
+        {
+            <option value="@m" selected="@(m == (string)ViewBag.Miasto ? "selected" : null)">@m</option>
+        }
+    </select>
+
+    <button type="submit" class="btn btn-primary">Filtruj</button>
+</form>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Nazwa</th>
+        <th>Miasto</th>
+        <th>Adres</th>
+        <th>Autobusy</th>
+        <th>Akcje</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var z in Model)
+    {
+        <tr>
+            <td>@z.Nazwa</td>
+            <td>@z.Miasto</td>
+            <td>@z.Adres</td>
+            <td>@z.Autobusy.Count</td>
+            <td>
+                <a class="btn btn-sm btn-info" href="@Url.Action("Details", new { id = z.Id })">Szczegóły</a>
+                <a class="btn btn-sm btn-warning" href="@Url.Action("Edit", new { id = z.Id })">Edytuj</a>
+                <a class="btn btn-sm btn-danger" href="@Url.Action("Delete", new { id = z.Id })">Usuń</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<a class="btn btn-success" href="@Url.Action("Create")">Dodaj nową zajezdnię</a>
