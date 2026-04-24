@@ -11,4 +11,5 @@ public class AppDbContext : DbContext
     public DbSet<Autobus> Autobusy { get; set; }
     public DbSet<Kierowca> Kierowcy { get; set; }
     public DbSet<Kurs> Kursy { get; set; }
+    public DbSet<User> Users { get; set; }
 }

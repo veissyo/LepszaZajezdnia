@@ -1,0 +1,34 @@
+# Build
+bin/
+obj/
+
+# Rider / IntelliJ
+.idea/
+*.sln.iml
+
+# User files
+*.user
+*.suo
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# .NET
+*.dll
+*.exe
+*.pdb
+
+# App settings (ważne!)
+appsettings.json
+appsettings.Development.json
+
+# EF
+*.db
+*.sqlite
+
+# Node (jeśli kiedyś użyjesz)
+node_modules/

@@ -1,0 +1,21 @@
+﻿@model Zajezdnia.DTOs.LoginDto
+
+<h2>Logowanie</h2>
+
+<form asp-action="Login" method="post">
+    <div asp-validation-summary="All"></div>
+    
+    <div>
+        <label asp-for="Username"></label>
+        <input asp-for="Username" />
+    </div>
+    
+    <div>
+        <label asp-for="Password"></label>
+        <input asp-for="Password" type="password" />
+    </div>
+    
+    <button type="submit">Zaloguj</button>
+</form>
+
+<a asp-action="Register">Nie masz konta? Zarejestruj się</a>
